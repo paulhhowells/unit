@@ -1,0 +1,7 @@
+# Ignore mac files
+.DS_Store
+[Tt]humbs.db
+
+# Ignore files I want to ignore
+*.hide
+__*
