@@ -1,4 +1,198 @@
-/*  S T A N D A R D I S E  */
+/*  D E F A U L T S  */
+html,
+body {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+html,
+body,
+div,
+span,
+abbr,
+strike,
+strong,
+em,
+sub,
+sup,
+cite,
+address,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+form,
+fieldset,
+legend,
+input,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+object,
+iframe,
+output {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  background-position: left top;
+}
+pre,
+code,
+address,
+caption,
+cite,
+code,
+ul,
+ol,
+li {
+  font-size: 1em;
+  font-weight: normal;
+  font-style: normal;
+  vertical-align: baseline;
+  background-position: left top;
+}
+em,
+strong,
+th {
+  font-size: 1em;
+  vertical-align: baseline;
+}
+pre {
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+input,
+textarea {
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+  /* requires a border */
+
+}
+input[type=text],
+input[type=submit],
+input[type=password] {
+  font-size: 1em;
+}
+select,
+option,
+textarea {
+  font-size: 1em;
+}
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+fieldset,
+img,
+a img {
+  border: none;
+  /* abbr has border-bottom */
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  /* IE7 show td border*/
+
+  border-spacing: 0;
+}
+caption,
+th {
+  text-align: left;
+}
+img {
+  vertical-align: bottom;
+}
+p img {
+  vertical-align: baseline;
+}
+sup,
+sub {
+  vertical-align: baseline;
+  position: relative;
+  top: -0.4em;
+}
+sub {
+  top: 0.4em;
+}
+code,
+kbd,
+pre,
+samp,
+tt {
+  font-family: monospace,monospace;
+  font-size: 1em;
+  /* ffx hack */
+
+  line-height: 100%;
+  *font-size: 108%;
+  /* ie6+7 hack */
+
+}
+label,
+input[type=button],
+input[type=submit],
+button {
+  cursor: pointer;
+}
+div {
+  /* this one needs testing and refining */
+  /* text-overflow: ellipsis; */
+}
+
+/* HTML5 */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section,
+summary {
+  display: block;
+  /*
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  */
+}
+/* Corrects `inline-block` display not defined in IE 8/9. */
+audio,
+canvas,
+video {
+  display: inline-block;
+}
+
 
 
 
@@ -6,6 +200,32 @@
 
 
 /*  B A S E  */
+body {
+  background-color: #444;
+  font-family: sans-serif;
+}
+h1 {
+  font-size: 2em;
+  line-height: 1em;
+  margin-bottom: 0.5em;
+}
+
+
+code.ouput {
+	display: block;
+	font-family:"Courier New", Courier, monospace;
+	/* 
+	white-space: normal;	
+	word-wrap: normal;
+	word-break: normal;
+	*/
+}
+pre code {
+  -o-tab-size: 2;
+	-moz-tab-size: 2;
+	-webkit-tab-size: 2;	
+	tab-size: 2;
+}
 
 
 
@@ -13,9 +233,28 @@
 
 
 /*  L A Y O U T  */
-.l-ribbon {}
-.l-wrapper {}
-
+.l-ribbon {
+  /*
+  background-color: rgba(75,35,15,0.9);
+  background-color: rgba(41,0,64,0.9);
+  */
+}
+.l-wrapper {
+  width: 760px;
+  min-width: 760px;
+  margin: 0 auto 0 auto;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.95);
+  
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.6);
+}
+.l-ui {}
+.l-css {
+  margin-bottom: 1em;
+}
 
 
 
@@ -23,9 +262,25 @@
 
 
 /*  F O R M  */
-.field-line {} 
+.field-line {
+  margin-bottom: 10px;
+  } 
 .field-text {}
+.field-text label {
+  display: inline-block;
+  width: 12em;
+  margin-right: 1em;
+}
+.field-text input[type=text] {
+  width: 12em;
+}
+.field-text input[type=text].digits {
+  width: 2em;
+}
+
 .field-checkbox {}
+.field-checkbox label {}
+.field-checkbox input[type=checkbox] {}
 
 
 

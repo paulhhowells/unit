@@ -12,22 +12,21 @@
 </head>
 <body>
   <div class="l-ribbon">
-  	<div class="l-wrapper">
+  	<div class="l-wrapper l-ui">
   		<h1>Unit CSS Generator</h1>
   		
   		
-  		<form>
+  		<form name="ui">
     		<div class="field-line field-text">
-    		  <label for="column-width" >Column width</label><input type="text" name="column_width" id="column-width" />
+    		  <label for="column-width">Column width</label><input type="text" name="column_width" id="column-width" class="digits" />
     		</div>
     		<div class="field-line field-text">
-    		  <label for="gutter" >Gutter between columns</label><input type="text" name="gutter" id="gutter" />
+    		  <label for="gutter">Gutter between columns</label><input type="text" name="gutter" id="gutter" class="digits" />
     		</div>
     		<div class="field-line field-text">
-      		<label for="number-of-columns" >Number of columns</label><input type="text" name="number_of_columns" id="number-of-columns" /> 
+      		<label for="number-of-columns">Number of columns</label><input type="text" name="number_of_columns" id="number-of-columns" class="digits" /> 
     		</div>
     		
-    		<hr />
     		
     		<!--
     		<div class="field-line field-checkbox">
@@ -39,19 +38,16 @@
     		<div class="field-line field-checkbox">
     		  <label for="show-mockup" >Show mockup</label><input type="checkbox" name="show_mockup" id="show-mockup" />
     		</div>
+    		
+    		show examples
     		-->
-    		
-
-    		
-    		
-    		
     				
   		</form>
     
     </div>
   </div>
   <div class="l-ribbon">
-  	<div class="l-wrapper">
+  	<div class="l-wrapper l-css">
   		<pre><code id="css-output" class="output"></code></pre>
   	</div>
 	</div>
