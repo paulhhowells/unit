@@ -64,12 +64,12 @@ Licensed under the MIT License
     font : {
       visible : true,
       scaffold : {
-				core : [10, 11, 12, 13, 14, 15, 16, 18],
-				overrides : [10, 11, 12, 13, 14, 15, 16, 18, 20, 21, 22, 24, 25, 28, 32, 36]
-			},
-			core : [
-			 {size : 14, line_height : 20}
-			]
+        core : [10, 11, 12, 13, 14, 15, 16, 18],
+        overrides : [10, 11, 12, 13, 14, 15, 16, 18, 20, 21, 22, 24, 25, 28, 32, 36]
+      },
+      core : [
+       {size : 14, line_height : 20}
+      ]
     },
     init : function () {
       var
@@ -124,7 +124,7 @@ Licensed under the MIT License
 
       // attach handlers to form elements
       $('.digits').
-        keyup(function (el) {
+        keyup(function () { // (el) {
           var val = parseInt(this.value, 10);
           the.fields[this.name].val = (the.test.isNumber(val)) ? val : 0;
           the.run();
@@ -151,11 +151,11 @@ Licensed under the MIT License
     run : function () {
       var
         the = this,
+        css,
+        tab,
         i,
         i_total,
         i_width,
-        css,
-        tab,
         // breakpoint vars
         i_o,
         i_break,
@@ -165,13 +165,20 @@ Licensed under the MIT License
         breakpoints,
         i_px,
         i_em,
-        i_core;
-          
+        i_core,
+        i_core_px,
+        i_core_class,
+        i_font_size,
+        i_line_height,
+        j,
+        j_em,
+        j_override_px;
+
       the.unit_width = the.fields.column_width.val + the.fields.gutter.val;
       the.padding_left = Math.ceil(the.fields.gutter.val / 2);
       the.padding_right = Math.floor(the.fields.gutter.val / 2);
       tab = '&#9;';
-      
+
       css = '';
       css += "/*<br />";
       css += " *  Unit CSS system<br />";
@@ -265,7 +272,7 @@ Licensed under the MIT License
         css += "/* Unit Breakpoints */";
         css += '<br />';
 
-        
+
 
         i_break = '';
         brk = '';
@@ -279,44 +286,44 @@ Licensed under the MIT License
         });
 
         // combine Basic and Extra
-				// all = [].concat(basic, settings.breakpoints.extra);
+        // all = [].concat(basic, settings.breakpoints.extra);
 
 
-				// loop through and print ALL the breakpoints to css
-				for (i = 0; i < breakpoints.length; i += 1) {
+        // loop through and print ALL the breakpoints to css
+        for (i = 0; i < breakpoints.length; i += 1) {
 
-					i_o = breakpoints[i];
-					css +=  "@media only screen";
+          i_o = breakpoints[i];
+          css +=  "@media only screen";
 
-					if (i_o.hasOwnProperty('min_width')) {
-						i_unit_type = (typeof(i_o.min_width) === "string") ? "" : "px";
-						css += " and (min-width : "+ i_o.min_width + i_unit_type + ")";
-						i_break += "min";
-						i_brk_array.push(i_o.min_width);
-					}
+          if (i_o.hasOwnProperty('min_width')) {
+            i_unit_type = (typeof(i_o.min_width) === "string") ? "" : "px";
+            css += " and (min-width : "+ i_o.min_width + i_unit_type + ")";
+            i_break += "min";
+            i_brk_array.push(i_o.min_width);
+          }
 
-					if (i_o.hasOwnProperty('min_device_width')) {
-						i_unit_type = (typeof(i_o.min_device_width) === "string") ? "" : "px";
-						css += " and (min-device-width : "+ i_o.min_device_width + i_unit_type + ")";
-					}
+          if (i_o.hasOwnProperty('min_device_width')) {
+            i_unit_type = (typeof(i_o.min_device_width) === "string") ? "" : "px";
+            css += " and (min-device-width : "+ i_o.min_device_width + i_unit_type + ")";
+          }
 
-					if (i_o.hasOwnProperty('max_width')) {
-						i_unit_type = (typeof(i_o.max_width) === "string") ? "" : "px";
-						css += " and (max-width : " + i_o.max_width + i_unit_type + ")";
-						i_break += "max";
-						i_brk_array.push(i_o.max_width);
-					}
+          if (i_o.hasOwnProperty('max_width')) {
+            i_unit_type = (typeof(i_o.max_width) === "string") ? "" : "px";
+            css += " and (max-width : " + i_o.max_width + i_unit_type + ")";
+            i_break += "max";
+            i_brk_array.push(i_o.max_width);
+          }
 
-					if (i_o.hasOwnProperty('max_device_width')) {
-						i_unit_type = (typeof(i_o.max_device_width) === "string") ? "" : "px";
-						css += " and (max-device-width : " + i_o.max_device_width + i_unit_type + ")";
-					}
+          if (i_o.hasOwnProperty('max_device_width')) {
+            i_unit_type = (typeof(i_o.max_device_width) === "string") ? "" : "px";
+            css += " and (max-device-width : " + i_o.max_device_width + i_unit_type + ")";
+          }
 
-					if (i_o.hasOwnProperty('orientation')) {
-						css += " and (orientation : " + i_o.orientation + ")";
-					}
+          if (i_o.hasOwnProperty('orientation')) {
+            css += " and (orientation : " + i_o.orientation + ")";
+          }
 
-					switch (i_break) {
+          switch (i_break) {
             case 'min':
               brk = 'min' + i_brk_array[0];
               break;
@@ -326,136 +333,116 @@ Licensed under the MIT License
             case 'minmax':
               brk = 'brk-' + i_brk_array[0] + '-' + i_brk_array[1];
               break;
-					}
+          }
 
-					css += " {";
-					css += "<br />";
+          css += " {";
+          css += "<br />";
 
-					// define unit widths at this breakpoint
+          // define unit widths at this breakpoint
           for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
             i_total = i * the.unit_width;
             css += "&#9;.u-" + i + '-' + brk + " {width: " + i_total + "px;}  <br />";
           }
 
 
-					css += "}";
-					css += "<br />";
-				}
+          css += "}";
+          css += "<br />";
+        }
       }
-      
+
       // breakpoints
       if(the.font.visible) {
         css += "<br />";
-				css += "/*<br />";
-				css += " * Baseline Micro-Styles<br />";
-				css += " */<br />";
-        
-        // build scaffolding        
-				css += "<br />";
-				css += "/* font-size scaffolding - intended for prototyping during development */<br />";
-				for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
-					i_px = the.font.scaffold.overrides[i];
-					i_em = (i_px / 16).toString();
-					css += ".f-" + i_px + " {font-size: " + i_em + "em;} <br />";
-				}
-        
-        css += '<br />';
-        
-        for (i = 0; i < the.font.scaffold.core.length; i += 1) {
-					i_core_px = the.font.scaffold.core[i];
+        css += "/*<br />";
+        css += " * Baseline Micro-Styles<br />";
+        css += " */<br />";
 
-						
-					for (j = 0; j < the.font.scaffold.overrides.length; j++) {
-						j_override_px = the.font.scaffold.overrides[j];
-						j_em = (j_override_px / i_core_px ).toString();
-						css += ".f-" + i_core_px + " .f-" + j_override_px + " {font-size: " + j_em + "em;}<br />";
-						
-					}
-				}
-				css += '<br />';
-				
-				
+        // build scaffolding
+        css += "<br />";
+        css += "/* font-size scaffolding - intended for prototyping during development */<br />";
+        for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
+          i_px = the.font.scaffold.overrides[i];
+          i_em = (i_px / 16).toString();
+          css += ".f-" + i_px + " {font-size: " + i_em + "em;} <br />";
+        }
+
+        css += '<br />';
+
+        for (i = 0; i < the.font.scaffold.core.length; i += 1) {
+          i_core_px = the.font.scaffold.core[i];
+
+
+          for (j = 0; j < the.font.scaffold.overrides.length; j += 1) {
+            j_override_px = the.font.scaffold.overrides[j];
+            j_em = (j_override_px / i_core_px ).toString();
+            css += ".f-" + i_core_px + " .f-" + j_override_px + " {font-size: " + j_em + "em;}<br />";
+
+          }
+        }
+        css += '<br />';
+
+
         // build core
         css += "<br />";
         for (i = 0; i < the.font.core.length; i += 1) {
           i_core = the.font.core[i];
           // i_core.size
           // i_core.line_height
-          core_class = ".f-" + i_core.size + '-' + i_core.line_height;
-          
-          
+          i_core_class = ".f-" + i_core.size + '-' + i_core.line_height;
+
+
           css += '/*<br />';
           css += ' * core design font size &amp; baseline choice<br />';
           css += ' *' + tab + 'font size ' + i_core.size + 'px<br />';
           css += ' *' + tab + 'baseline  ' + i_core.line_height + 'px<br />';
-          css += ' *' + tab + core_class + '<br />';
+          css += ' *' + tab + i_core_class + '<br />';
           css += ' *<br />';
-          css += ' *' + tab + 'this class is intended to set the font-size and baseline for a page or region, and<br />';    
+          css += ' *' + tab + 'this class is intended to set the font-size and baseline for a page or region, and<br />';
           css += ' *' + tab + 'should not be used on any element with an ancestor set to a font-size other than 100% <br />';
           css += ' */<br />';
-          
+
           css += "<br />";
-          css += core_class + ' {<br />';
+          css += i_core_class + ' {<br />';
           css += tab + 'font-size: ' + (i_core.size / 16).toString() + 'em;<br />';
-          css += tab + 'line-height: ' + (i_core.line_height / i_px).toString() + 'em;<br />';
+          css += tab + 'line-height: ' + (i_core.line_height / i_core.size).toString() + 'em;<br />';
           css += '}';
           css += "<br />";
-          
+
           // font-sizes
           css += "<br />";
           css += "/* font sizes */<br />";
           for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
-  					i_px = the.font.scaffold.overrides[i];
-  					i_font_size = (i_px / i_core.size).toString() + 'em';
-  					i_line_height = (i_core.line_height / i_px).toString() + 'em';
-  					/*
-  					css += core_class + " .f-" + i_px + ",<br />";
-  					css += ".f-" + i_core.size + " .f-" + i_px + " {";
-  					css += "<br />";
-  					css += tab + "font-size: " + i_font_size + ";";
-  					css += "<br />";
-  					css += tab + "line-height: " + i_line_height + ";";
-  					css += "<br />";
-  					css +="} <br />";
-  					*/
-  					css += core_class + " .f-" + i_px + " {";
-  					css += "font-size: " + i_font_size + ";";
-  					css +="} <br />";
-  				}
-  				
-  				// baselines
-  				css += "<br />";
-  				css += "/* line heights - baseline " + i_core.line_height + "px */<br />";
-  				for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
-  				  i_px = the.font.scaffold.overrides[i];
-  				  
-  				  i_line_height = (i_core.line_height / i_px).toString() + 'em';
-  				  
-  				  css += core_class + " .f-" + i_px + " {line-height: " + i_line_height + ";}<br />";
-  				}
-  				
+            i_px = the.font.scaffold.overrides[i];
+            i_font_size = (i_px / i_core.size).toString() + 'em';
+            i_line_height = (i_core.line_height / i_px).toString() + 'em';
+            /*
+            css += core_class + " .f-" + i_px + ",<br />";
+            css += ".f-" + i_core.size + " .f-" + i_px + " {";
+            css += "<br />";
+            css += tab + "font-size: " + i_font_size + ";";
+            css += "<br />";
+            css += tab + "line-height: " + i_line_height + ";";
+            css += "<br />";
+            css +="} <br />";
+            */
+            css += i_core_class + " .f-" + i_px + " {";
+            css += "font-size: " + i_font_size + ";";
+            css +="} <br />";
+          }
+
+          // baselines
+          css += "<br />";
+          css += "/* line heights - baseline " + i_core.line_height + "px */<br />";
+          for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
+            i_px = the.font.scaffold.overrides[i];
+
+            i_line_height = (i_core.line_height / i_px).toString() + 'em';
+
+            css += i_core_class + " .f-" + i_px + " {line-height: " + i_line_height + ";}<br />";
+          }
+
         }
       }
-
-/*
-.f-14-24 {font-size: 0.875em;}
-
-* ancestor is f-14 or f-14-24 *
-.f-14-24 .f-10, .f-14 .f-10 {font-size: 0.7142857142857143em;}
-.f-14-24 .f-11, .f-14 .f-11 {font-size: 0.7857142857142857em;}
-
-
-* baseline 24px *
-.f-14-24 .f-10 {line-height:2.4em;}
-.f-14-24 .f-11 {line-height:2.1818181818181817em;}
-.f-14-24 .f-12 {line-height:2em;}
-.f-14-24 .f-13 {line-height:1.8461538461538463em;}
-.f-14-24,
-.f-14-24 .f-14 {line-height:1.7142857142857142em;}
-.f-14-24 .f-15 {line-height:1.6em;}
-.f-14-24 .f-16 {line-height:1.5em;}
-.f-14-24 .f-18 {line-height:1.3333333333333333em;}
-*/
 
       css += '<br />';
       $('#css-output').html(css);
