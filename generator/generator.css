@@ -1,3 +1,5 @@
+@import 'slideshow.css';
+
 /*  D E F A U L T S  */
 html,
 body {
@@ -201,7 +203,8 @@ video {
 
 /*  B A S E  */
 body {
-  background-color: #444;
+  color: #333;
+  background-color: #555;
   font-family: sans-serif;
 }
 h1 {
@@ -214,12 +217,14 @@ h1 {
 code.ouput {
 	display: block;
 	font-family:"Courier New", Courier, monospace;
+	font-size: 14px;
 	/* 
 	white-space: normal;	
 	word-wrap: normal;
 	word-break: normal;
 	*/
 }
+pre,
 pre code {
   -o-tab-size: 2;
 	-moz-tab-size: 2;
@@ -240,8 +245,8 @@ pre code {
   */
 }
 .l-wrapper {
-  width: 760px;
-  min-width: 760px;
+  width: 960px;
+  min-width: 960px;
   margin: 0 auto 0 auto;
   margin-top: 10px;
   padding: 20px;
@@ -280,7 +285,12 @@ pre code {
 
 .field-checkbox {}
 .field-checkbox label {}
-.field-checkbox input[type=checkbox] {}
+.field-checkbox input[type=checkbox] {
+  float: left;
+  font-size: 1em;
+  margin-right: 0.5em;
+  
+}
 
 
 
