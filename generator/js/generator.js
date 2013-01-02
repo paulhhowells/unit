@@ -237,7 +237,18 @@ Licensed under the MIT License
       }
 
       css += ' <br />';
+      
+      // define fluid unit widths
+      css += '/* fractions (of Variable pixel width) */ <br />';
+      var one_fluid_unit_percent = 100 / the.fields.number_of_columns.val;
+      for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
+        i_total = i * one_fluid_unit_percent;
+        css += ".v-" + i + "-" + the.fields.number_of_columns.val + " {width: " + i_total + "%;}  <br />";
+      }
 
+      css += ' <br />';
+      
+      
       // pre
       for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
         i_width = (the.unit_width) * i;
