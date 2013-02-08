@@ -172,11 +172,13 @@ Licensed under the MIT License
         i_line_height,
         j,
         j_em,
-        j_override_px;
+        j_override_px,
+        padding_left_and_right;
 
       the.unit_width = the.fields.column_width.val + the.fields.gutter.val;
       the.padding_left = Math.ceil(the.fields.gutter.val / 2);
       the.padding_right = Math.floor(the.fields.gutter.val / 2);
+      padding_left_and_right = the.padding_left + the.padding_right;
       tab = '&#9;';
 
       css = '';
@@ -199,8 +201,8 @@ Licensed under the MIT License
       i_width = the.fields.number_of_columns.val * the.unit_width;
       css += ".units-" + the.fields.number_of_columns.val + ",<br />";
       css += ".u-wrapper-" + the.fields.number_of_columns.val + " {<br />";
-      css += "&#9;width: " + i_width + "px<br />";
-      css += "&#9;min-width: " + i_width + "px<br />";
+      css += "&#9;width: " + i_width + "px;<br />";
+      css += "&#9;min-width: " + i_width + "px;<br />";
       css += "} <br />";
 
       // optional: add padding to the wrapper so that side gutters match the column gutters
@@ -216,6 +218,13 @@ Licensed under the MIT License
       css += "&#9;padding-right: " + the.padding_right + "px;<br />";
       css += "} <br />";
 
+      // define inner breakout
+      css += ".u-breakout {<br />";
+      css += "&#9;margin-left: -" + the.padding_left + "px;<br />";
+      css += "&#9;margin-right: -" + the.padding_right + "px;<br />";
+      css += "} <br />";
+
+
       // define unit css
       for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
         css += ".u-" + i;
@@ -230,12 +239,22 @@ Licensed under the MIT License
       css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
       css += '}<br />';
 
-      // define unit widths
+      // define unit widths   
+      css += '/* unit inner widths */<br />';
       for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
         i_total = i * the.unit_width;
         css += ".u-" + i +" {width: " + i_total + "px;}  <br />";
       }
-
+      css += ' <br />';
+      
+      // define inner widths    
+      css += '/* unit inner widths */<br />';
+      var padding_left_and_right = the.padding_left + the.padding_right
+      for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
+        i_total = (i * the.unit_width) - padding_left_and_right;
+        css += ".i-" + i +" {width: " + i_total + "px;}  <br />";
+      }
+ 
       css += ' <br />';
       
       // define fluid unit widths
