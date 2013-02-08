@@ -61,6 +61,8 @@ Licensed under the MIT License
     breakpoints : {
       visible : true
     },
+    drupal : false, // if true replace clearfix with drupal compatible
+    less : false, // LESS preprocessor, else CSS
     font : {
       visible : true,
       scaffold : {
