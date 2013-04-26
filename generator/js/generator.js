@@ -201,20 +201,34 @@ Licensed under the MIT License
       css += "<br />";
 
       // define unit wrapper
-      css += ".units,<br />";
-      css += ".u-wrapper {<br />";
-      css += "&#9;/* wraps a set of unit columns  */<br />";
+      css += ".units {<br />";
+      // css += ".u-wrapper {<br />";
+      css += tab + "/* wraps a set of unit columns  */<br />";
       
-      // test for drupal
-      css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
+      // test for drupal?
+      css += tab + "_height: 1px; /* IE6 */<br />";
+		  css += tab + "min-height: 1px; /* IE7 */<br />";
+
+      // css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
       css += "} <br />";
+      
+			css += ".units:after {<br />";
+			css += tab + 'content: ".";<br />';
+			css += tab + "display: block;<br />";
+			css += tab + "height: 0;<br />";
+			css += tab + "clear: both;<br />";
+			css += tab + "visibility: hidden;<br />";
+			css += "}<br />";
+
 
       // define unit wrapper width
       css += ".units-" + the.fields.number_of_columns.val + ",<br />";
       css += ".u-wrapper-" + the.fields.number_of_columns.val + " {<br />";
-      css += "&#9;width: " + i_width + "px;<br />";
-      css += "&#9;min-width: " + i_width + "px;<br />";
+      css += tab + "width: " + i_width + "px;<br />";
+      css += tab + "min-width: " + i_width + "px;<br />";
       css += "} <br />";
+
+
 
       // optional: add padding to the wrapper so that side gutters match the column gutters
       css += ".units-matched-page-gutters,<br />";
@@ -245,12 +259,30 @@ Licensed under the MIT License
       }
       css += ' {<br />';
       css += "&#9;float: left;<br />";
-      css += "&#9;min-height: 2px;<br />";
+      css += "&#9;_height: 1px;<br />";
+      css += "&#9;min-height: 1px;<br />";
       css += "&#9;position: relative;<br />";
       
       // test for drupal
-      css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
+      // css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
       css += '}<br />';
+
+			for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
+        css += ".u-" + i;
+        if (i !== the.fields.number_of_columns.val) {
+        css += ":after, ";
+        }
+      }
+      css += ":after {<br />";
+			css += tab + 'content: ".";<br />';
+			css += tab + "display: block;<br />";
+			css += tab + "height: 0;<br />";
+			css += tab + "clear: both;<br />";
+			css += tab + "visibility: hidden;<br />";
+			css += "}<br />";
+
+			css += '<br />';
+
 
       // define unit widths   
       css += '/* unit inner widths */<br />';
@@ -374,7 +406,8 @@ Licensed under the MIT License
               brk = 'max' + i_brk_array[0];
               break;
             case 'minmax':
-              brk = 'brk-' + i_brk_array[0] + '-' + i_brk_array[1];
+              // brk = 'brk-' + i_brk_array[0] + '-' + i_brk_array[1];
+              brk = '-' + i_brk_array[0] + '-' + i_brk_array[1];
               break;
           }
 
