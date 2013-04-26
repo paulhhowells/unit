@@ -303,7 +303,8 @@ Licensed under the MIT License
       css += ' <br />';
       
       // define fluid unit widths
-      css += '/* fractions (of Variable pixel width) */ <br />';
+      /*
+      css += '/ * fractions (of Variable pixel width) * / <br />';
       var one_fluid_unit_percent = 100 / the.fields.number_of_columns.val;
       for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
         i_total = i * one_fluid_unit_percent;
@@ -311,7 +312,7 @@ Licensed under the MIT License
       }
 
       css += ' <br />';
-      
+      */
       
       // pre
       for (i = 1; i <= the.fields.number_of_columns.val; i += 1) {
@@ -338,12 +339,99 @@ Licensed under the MIT License
         i_width = (the.unit_width) * i;
         css += ".pull-" + i + " {margin-left:-" + i_width + "px;} <br />";
       }
-
+      
       css += '<br />';
+      css += '<br />';
+      css += '/* Fractions */';
+      css += '<br />';
+      
+      css += '<br />';
+      css += '.unit:last-child {<br />';
+			css += tab + 'width: auto;<br />';
+			css += tab + 'overflow: hidden;<br />';
+			css += tab + 'float: none;<br />';
+			css += tab + 'zoom: 1;<br />';
+			css += '}<br />';
+			css += '.unit:last-child:after {<br />';
+			css += tab + 'content: "";<br />';
+			css += tab + 'display: none;<br />';
+			css += '}<br />';
+
+		
+			css += '.u-1-16 {width:  6.25%;}<br />';
+			css += '.u-2-16 {width: 12.5%;}<br />';
+			css += '.u-3-16 {width: 18.75%;}<br />';
+			css += '.u-4-16 {width: 25%;}<br />';
+			css += '.u-5-16 {width: 31.25%;}<br />';
+			css += '.u-6-16 {width: 37.5%;}<br />';
+			css += '.u-7-16 {width: 43.75%;}<br />';
+			css += '.u-8-16 {width: 50%;}<br />';
+			css += '.u-9-16 {width: 56.25%;}<br />';
+			css += '.u-10-16 {width: 62.5%;}<br />';
+			css += '.u-11-16 {width: 68.75%;}<br />';
+			css += '.u-12-16 {width: 75%;}<br />';
+			css += '.u-13-16 {width: 81.25%;}<br />';
+			css += '.u-14-16 {width: 87.5%;}<br />';
+			css += '.u-15-16 {width: 93.75%;}<br />';
+			css += '.u-16-16 {width: 100%;}<br />';
+			
+			css += '.u-1-12 {width:  8.333333333333333%;}<br />';
+			css += '.u-2-12 {width: 16.666666666666666%;}<br />';
+			css += '.u-3-12 {width: 25%;}<br />';
+			css += '.u-4-12 {width: 33.333333333333333%;}<br />';
+			css += '.u-5-12 {width: 41.666666666666666%;}<br />';
+			css += '.u-6-12 {width: 50%;}<br />';
+			css += '.u-7-12 {width: 58.333333333333333%;}<br />';
+			css += '.u-8-12 {width: 66.666666666666666%;}<br />';
+			css += '.u-9-12 {width: 75%;}<br />';
+			css += '.u-10-12 {width: 83.333333333333333%;}<br />';
+			css += '.u-11-12 {width: 91.666666666666666%;}<br />';
+			css += '.u-12-12 {width: 100%;}<br />';
+			
+			//eighths ?
+			
+			css += '.u-1-6	{width: 16.666666666666666%;}<br />';
+			css += '.u-2-6	{width: 33.333333333333333%;}<br />';
+			css += '.u-3-6	{width: 50%;}<br />';
+			css += '.u-4-6	{width: 66.666666666666666%;}<br />';
+			css += '.u-5-6	{width: 83.333333333333333%;}<br />';
+			
+			css += '.u-1-5	{width: 20%;}<br />';
+			css += '.u-2-5	{width: 40%;}<br />';
+			css += '.u-3-5	{width: 60%;}<br />';
+			css += '.u-4-5	{width: 80%;}<br />';
+			css += '.u-1-4	{width: 25%;}<br />';
+			css += '.u-2-4	{width: 50%;}<br />';
+			css += '.u-3-4	{width: 75%;}<br />';
+			css += '.u-1-3	{width: 33.333333333333333%;}<br />';
+			css += '.u-2-3	{width: 66.666666666666666%;}<br />';
+			css += '.u-1-2	{width: 50%;}<br />';
+			css += '.u-1-1	{width: 100%;}<br />';
+
+      
+      
+      
+      
+      
+      
+      css += '<br />';
+      
+      css += "/* sometimes Drupal makes it easier to add a class to a wrapping element<br />";      
+      css += " * than a wrapped element, which you might want to do when you don't know<br />";
+      css += " * if there will be an odd or even number of wrapped elements<br />"; 
+      css += " */<br />";
+
+			css += ".u-halves" + tab + ".u-width {width: 50%;}<br />";
+			css += ".u-thirds" + tab + ".u-width {width: 33.333333333333333%;}<br />";
+			css += ".u-fourths" + tab + ".u-width {width: 25%;}<br />";
+			css += ".u-fifths" + tab + ".u-width {width: 20%;}<br />";
+
+
+
 
       // breakpoints
       if(the.breakpoints.visible) {
-
+	      css += '<br />';
         css += "/* Unit Breakpoints */";
         css += '<br />';
 

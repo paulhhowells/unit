@@ -2,7 +2,7 @@ unit
 ====
 
 ## unit - a responsive css grid framework
-## version 0.9
+## version 0.9 — almost ready
 
 ### Why Unit? Unit has been created in response to a collision of the following needs:
 
@@ -46,7 +46,7 @@ Columns may be nested: e.g.
 #### Fractions
 In the examples above the grid units use pixels described as grid, but they may also use percentages fractions.  For example, a column that is one third wide would be given the class .u-1-3 and a column two thirds wide would have .u-2-3.  The format is 'u' - 'fraction numerator' - 'fraction denominator'.
 
-Sixteenths, Twelfths, Eighths, Sixths, Fifths, Fourths, Thirds and Halves are ready for use.
+Sixteenths, Twelfths, <strike>Eighths,</strike> Sixths, Fifths, Fourths, Thirds and Halves are ready for use.
 
 #### Breakpoints
 
@@ -86,11 +86,19 @@ Coupling width and padding to a single dom element makes life harder:
 
 Defenders of coupled solutions might be tempted to criticise Unit for adding an extra div (or other element) with the .u-inner class in order to add gutter spacing between columns. In practice however (not least within Drupal) the items (often Modules to use SMACSS terminology) placed within columns almost always contain at least one Div (or appropriate HTML 5 element) to wrap their contents with module classes.  One may simply add .u-inner to the existing classes on this wrapping Div, and need not add a any extra mark-up.  Within in Drupal 7 there is one possible exception to this, a very stripped down theme might not wrap a Node’s content, so should this be the case then you may have to suffer a single extra div in order to use Unit.
 
+### How to use this Github Repo
+1. open generator/generator.html within a browser
+2. copy and paste the CSS
+
 ### To Do
+* test this Read Me for comprehensibility
+* improve documentation
+
 #### css
 * add inline block css
 * fold in max/width
 * fold in percentages
+	* add eighths
 * add Less output
 
 #### javascript
@@ -98,6 +106,12 @@ Defenders of coupled solutions might be tempted to criticise Unit for adding an 
 * ui for adding breakpoints
 * add sliding panels
 * show mockup of panel widths
+* remove .v-
+* hide or make font micro-styles optional
+
+#### questions
+* rename .u-inner to .u-module ?
+* move font micro-styles into another project?
 
 ### Notes
 Unit has been road tested and is being developed with Drupal sites, however please don’t hesitate to evaluate Unit for a non-Drupal based solution.
