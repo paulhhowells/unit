@@ -175,19 +175,27 @@ Licensed under the MIT License
         j,
         j_em,
         j_override_px,
-        padding_left_and_right;
+        padding_left_and_right,
+        baseline,
+        baseline_denominator,
+        baseline_threshold,
+        i_comment;
 
       the.unit_width = the.fields.column_width.val + the.fields.gutter.val;
       the.padding_left = Math.ceil(the.fields.gutter.val / 2);
       the.padding_right = Math.floor(the.fields.gutter.val / 2);
       padding_left_and_right = the.padding_left + the.padding_right;
       tab = '&#9;';
-
+      
+      i_width = the.fields.number_of_columns.val * the.unit_width;
+      var visible_width = i_width - padding_left_and_right;
+      
       css = '';
       css += "/*<br />";
-      css += " *  Unit CSS system<br />";
+      css += " * Unit CSS system<br />";
       css += " *<br />";
-      css += " *<br />";
+      css += " * total width: " + i_width + "<br />";
+      css += " * visible width: " + visible_width + "<br />";
       css += " *<br />";
       css += " */<br />";
       css += "<br />";
@@ -196,11 +204,12 @@ Licensed under the MIT License
       css += ".units,<br />";
       css += ".u-wrapper {<br />";
       css += "&#9;/* wraps a set of unit columns  */<br />";
+      
+      // test for drupal
       css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
       css += "} <br />";
 
       // define unit wrapper width
-      i_width = the.fields.number_of_columns.val * the.unit_width;
       css += ".units-" + the.fields.number_of_columns.val + ",<br />";
       css += ".u-wrapper-" + the.fields.number_of_columns.val + " {<br />";
       css += "&#9;width: " + i_width + "px;<br />";
@@ -238,6 +247,8 @@ Licensed under the MIT License
       css += "&#9;float: left;<br />";
       css += "&#9;min-height: 2px;<br />";
       css += "&#9;position: relative;<br />";
+      
+      // test for drupal
       css += "&#9;overflow:hidden; _overflow:visible; _zoom:1;<br />";
       css += '}<br />';
 
@@ -390,8 +401,9 @@ Licensed under the MIT License
         css += " */<br />";
 
         // build scaffolding
+        /*
         css += "<br />";
-        css += "/* font-size scaffolding - intended for prototyping during development */<br />";
+        css += "/ * font-size scaffolding - intended for prototyping during development * /<br />";
         for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
           i_px = the.font.scaffold.overrides[i];
           i_em = (i_px / 16).toString();
@@ -412,7 +424,7 @@ Licensed under the MIT License
           }
         }
         css += '<br />';
-
+        */
 
         // build core
         css += "<br />";
@@ -463,14 +475,31 @@ Licensed under the MIT License
           }
 
           // baselines
+          baseline_denominator = 2;
+          baseline = Math.round(i_core.line_height / baseline_denominator);
+          baseline_threshold = 1.25;
+          i_comment = "";
+          
           css += "<br />";
           css += "/* line heights - baseline " + i_core.line_height + "px */<br />";
           for (i = 0; i < the.font.scaffold.overrides.length; i += 1) {
             i_px = the.font.scaffold.overrides[i];
-
-            i_line_height = (i_core.line_height / i_px).toString() + 'em';
-
-            css += i_core_class + " .f-" + i_px + " {line-height: " + i_line_height + ";}<br />";
+            i_line_height = (baseline * baseline_denominator) / i_px;
+            if (i_line_height < baseline_threshold) {
+	            baseline_denominator += 1;
+	            i_line_height = (baseline * baseline_denominator) / i_px;
+            }
+            i_line_height = i_line_height.toString() + 'em';
+            
+            // try to line up the comments using tabs
+            i_comment = tab;
+            if (i_line_height.length < 16) {
+	            i_comment += tab + tab;
+            };
+            // add a comment giving the line-height in pixels
+            i_comment += "/* " + Math.ceil(baseline * baseline_denominator) + "px */";
+            
+            css += i_core_class + " .f-" + i_px + " {line-height: " + i_line_height + ";" + i_comment + "}<br />";
           }
 
         }
