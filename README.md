@@ -86,9 +86,13 @@ Coupling width and padding to a single dom element makes life harder:
 
 Defenders of coupled solutions might be tempted to criticise Unit for adding an extra div (or other element) with the .u-inner class in order to add gutter spacing between columns. In practice however (not least within Drupal) the items (often Modules to use SMACSS terminology) placed within columns almost always contain at least one Div (or appropriate HTML 5 element) to wrap their contents with module classes.  One may simply add .u-inner to the existing classes on this wrapping Div, and need not add a any extra mark-up.  Within in Drupal 7 there is one possible exception to this, a very stripped down theme might not wrap a Node’s content, so should this be the case then you may have to suffer a single extra div in order to use Unit.
 
-### How to use this Github Repo
+### How to use this Github project
 1. open generator/generator.html within a browser
 2. copy and paste the CSS
+
+or
+
+* copy the .less file
 
 ### To Do
 * test this Read Me for comprehensibility
@@ -113,9 +117,12 @@ Defenders of coupled solutions might be tempted to criticise Unit for adding an 
 * rename .u-inner to .u-module ?
 * move font micro-styles into another project?
 
-### Notes
+### Compatibility
 Unit has been road tested and is being developed with Drupal sites, however please don’t hesitate to evaluate Unit for a non-Drupal based solution.
 
+IE6 and IE7 do not support media queries — likewise Unit is not intended to provide a fluid responsive layout within them.  Unit is however intended to support IE6 & IE7 with a fixed width design.
+
+### Notes
 Unit is nearly at v1.0 — experiments with width & max-width, and experiments with percentages still need to folded into the code.
 
 See more about experiments with percentages at: https://github.com/paulhhowells/percentage-width-sub-pixel-rounding-error-test-page
