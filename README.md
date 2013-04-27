@@ -10,7 +10,7 @@ unit
 2. SMACSS (see www.smacss.com)
 3. Drupal 7
 
-The heart of Unit is the decoupling of padding and width, combined with responsive breakpoints.
+At the core of Unit is the decoupling of padding and width, in combination with responsive breakpoints.
 
 A grid layout may comprise a set of Columns and Blocks (of content or functionality) which are placed into the columns.  Unit wraps a set of Columns in a .units class, gives each Column a class to set it’s width to a number of units, and gives each Block a .u-inner class that sets the gutter between classes.
 
@@ -128,3 +128,4 @@ Read more about SMACSS at http://www.smacss.com
 #### questions
 * rename .u-inner to .u-module ?
 * move font micro-styles into another project?
+* raison d'être
