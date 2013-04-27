@@ -238,6 +238,8 @@ Licensed under the MIT License
       css += "} <br />";
 
       // define unit inner
+      // indecision about what to call this
+      css += ".u-module,<br />";
       css += ".u-inner {<br />";
       css += "&#9;padding-left: " + the.padding_left + "px;<br />";
       css += "&#9;padding-right: " + the.padding_right + "px;<br />";

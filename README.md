@@ -98,7 +98,7 @@ Defenders of coupled solutions might be tempted to criticise Unit for adding an 
 * add inline block css
 * fold in max/width
 * fold in percentages
-	* add eighths
+	* <strike>add eighths</strike>
 * add Less output
 
 #### javascript
