@@ -46,7 +46,7 @@ Columns may be nested: e.g.
 #### Fractions
 In the examples above the grid units use pixels described as grid, but they may also use percentages fractions.  For example, a column that is one third wide would be given the class .u-1-3 and a column two thirds wide would have .u-2-3.  The format is 'u' - 'fraction numerator' - 'fraction denominator'.
 
-Sixteenths, Twelfths, <strike>Eighths,</strike> Sixths, Fifths, Fourths, Thirds and Halves are ready for use.
+Sixteenths, Twelfths, Eighths, Sixths, Fifths, Fourths, Thirds and Halves are ready for use.
 
 #### Breakpoints
 
@@ -99,7 +99,7 @@ Defenders of coupled solutions might be tempted to criticise Unit for adding an 
 * fold in max/width
 * fold in percentages
 	* <strike>add eighths</strike>
-* add Less output
+* <strike>add</strike> finish Less output
 
 #### javascript
 * ui for column width & gutters - catch fields on reload
