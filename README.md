@@ -94,6 +94,18 @@ or
 
 * copy the .less file
 
+### Compatibility
+Unit has been road tested and is being developed with Drupal sites, however please don’t hesitate to evaluate Unit for a non-Drupal based solution.
+
+IE6 and IE7 do not support media queries — likewise Unit is not intended to provide a fluid responsive layout within them.  Unit is however intended to support IE6 & IE7 with a fixed width design.
+
+### Notes
+Unit is nearly at v1.0 — experiments with width & max-width, and experiments with percentages still need to folded into the code.
+
+See more about experiments with percentages at: https://github.com/paulhhowells/percentage-width-sub-pixel-rounding-error-test-page
+
+Read more about SMACSS at http://www.smacss.com
+
 ### To Do
 * test this Read Me for comprehensibility
 * improve documentation
@@ -116,16 +128,3 @@ or
 #### questions
 * rename .u-inner to .u-module ?
 * move font micro-styles into another project?
-
-### Compatibility
-Unit has been road tested and is being developed with Drupal sites, however please don’t hesitate to evaluate Unit for a non-Drupal based solution.
-
-IE6 and IE7 do not support media queries — likewise Unit is not intended to provide a fluid responsive layout within them.  Unit is however intended to support IE6 & IE7 with a fixed width design.
-
-### Notes
-Unit is nearly at v1.0 — experiments with width & max-width, and experiments with percentages still need to folded into the code.
-
-See more about experiments with percentages at: https://github.com/paulhhowells/percentage-width-sub-pixel-rounding-error-test-page
-
-Read more about SMACSS at http://www.smacss.com
-
