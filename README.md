@@ -4,7 +4,7 @@ unit
 ## unit - a responsive css grid framework
 ## version 0.9 — almost ready
 
-### Why Unit? Unit has been created in response to a collision of the following needs:
+### Why Unit? Unit has been created in response to a collision of:
 
 1. Responsive layouts.
 2. SMACSS (see www.smacss.com)
