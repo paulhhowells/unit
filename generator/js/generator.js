@@ -388,23 +388,37 @@ Licensed under the MIT License
 			css += '.u-11-12 {width: 91.666666666666666%;}<br />';
 			css += '.u-12-12 {width: 100%;}<br />';
 			
-			//eighths ?
+			css += '.u-1-8	{width: 12.5%;}<br />';
+			css += '.u-2-8	{width: 25%;}<br />';
+			css += '.u-3-8	{width: 37.5%;}<br />';
+			css += '.u-4-8	{width: 50%;}<br />';
+			css += '.u-5-8	{width: 62.5%;}<br />';
+			css += '.u-6-8	{width: 75%;}<br />';
+			css += '.u-7-8	{width: 87.5%;}<br />';
+			css += '.u-8-8	{width: 100%;}<br />';
 			
 			css += '.u-1-6	{width: 16.666666666666666%;}<br />';
 			css += '.u-2-6	{width: 33.333333333333333%;}<br />';
 			css += '.u-3-6	{width: 50%;}<br />';
 			css += '.u-4-6	{width: 66.666666666666666%;}<br />';
 			css += '.u-5-6	{width: 83.333333333333333%;}<br />';
+			css += '.u-6-6	{width: 100%;}<br />';
 			
 			css += '.u-1-5	{width: 20%;}<br />';
 			css += '.u-2-5	{width: 40%;}<br />';
 			css += '.u-3-5	{width: 60%;}<br />';
 			css += '.u-4-5	{width: 80%;}<br />';
+			css += '.u-5-5	{width: 100%;}<br />';
+			
 			css += '.u-1-4	{width: 25%;}<br />';
 			css += '.u-2-4	{width: 50%;}<br />';
 			css += '.u-3-4	{width: 75%;}<br />';
+			css += '.u-4-4	{width: 100%;}<br />';
+			
 			css += '.u-1-3	{width: 33.333333333333333%;}<br />';
 			css += '.u-2-3	{width: 66.666666666666666%;}<br />';
+			css += '.u-3-3	{width: 100%;}<br />';
+			
 			css += '.u-1-2	{width: 50%;}<br />';
 			css += '.u-1-1	{width: 100%;}<br />';
 
