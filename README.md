@@ -74,7 +74,7 @@ Breakpoints may be combined: e.g.
 The convention of using the double dash -- to extend a class with a breakpoint is ideal for use elsewhere, with SMACSS style module classes.
 
 
-### What’s so wrong with coupling?
+### What’s so wrong with coupling gutters & columns?
 
 CSS grid systems frequently (invariably?) define a class for a 'grid column' or 'grid unit' that defines (for the element the class is applied to) both the column width, and (using either padding or margin) the gutter between columns.
 
