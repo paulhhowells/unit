@@ -433,8 +433,8 @@ Licensed under the MIT License
       css += '<br />';
       
       css += "/* sometimes Drupal makes it easier to add a class to a wrapping element<br />";      
-      css += " * than a wrapped element, which you might want to do when you don't know<br />";
-      css += " * if there will be an odd or even number of wrapped elements<br />"; 
+      css += " * than a wrapped element, which you might want to do (dynamically) when you<br />";
+      css += " * don't know if there will be an odd or even number of wrapped elements<br />"; 
       css += " */<br />";
 
 			css += ".u-halves" + tab + ".u-width {width: 50%;}<br />";
