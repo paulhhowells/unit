@@ -71,7 +71,7 @@ Breakpoints may be combined: e.g.
 
 .u-auto-- & breakpoint can be used to set to full width at the required breakpoint. This might well be used on a narrow screen to give its content full width. e.g. .u-auto--max480
 
-The convention of using the double dash -- to extend a class with a breakpoint is ideal for use elsewhere, with SMACSS style module classes.
+The convention of using the double dash -- to extend a class with a breakpoint is ideal for use elsewhere, e.g. with SMACSS style module classes.
 
 
 ### What’s so wrong with coupling gutters & columns?
@@ -82,9 +82,9 @@ Coupling width and padding to a single dom element makes life harder:
 
 1. It makes nesting grid units trickier.  Nesting often requires a '.row' class to undo the effects of the padding.  This can be particularly tricky if backend code that is dynamically generating mark-up is thus required to figure out if it needs to insert a .row type class.
 2. It can make fluid width CSS trickier, requiring approaches such as css box-sizing (http://caniuse.com/#search=box-sizing).
-3. Can get funky when aligning modules with display: inline-block
+3. Can get funky (in a bad way) when aligning modules with display: inline-block
 
-Defenders of coupled solutions might be tempted to criticise Unit for adding an extra div (or other element) with the .u-inner class in order to add gutter spacing between columns. In practice however (not least within Drupal) the items (often Modules to use SMACSS terminology) placed within columns almost always contain at least one Div (or appropriate HTML 5 element) to wrap their contents with module classes.  One may simply add .u-inner to the existing classes on this wrapping Div, and need not add a any extra mark-up.  Within in Drupal 7 there is one possible exception to this, a very stripped down theme might not wrap a Node’s content, so should this be the case then you may have to suffer a single extra div in order to use Unit.
+Defenders of coupled solutions might be tempted to criticise Unit for adding an extra div (or other element) with the .u-inner class in order to add gutter spacing between columns. In practice however (not least within Drupal) the items (often 'Modules' to use SMACSS terminology) placed within columns almost always contain at least one Div (or appropriate HTML 5 element) to wrap their contents with module classes.  One may simply add .u-inner to the existing classes on this wrapping Div, and need not add any extra mark-up.  Within in Drupal 7 there is one possible exception to this, a very stripped down theme might not wrap a Node’s content (i.e. node.tpl), so in this one instance you may have to suffer a single extra div in order to use Unit.
 
 ### How to use this Github project
 1. open generator/generator.html within a browser
