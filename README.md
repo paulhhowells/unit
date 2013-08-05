@@ -73,7 +73,28 @@ Breakpoints may be combined: e.g.
 
 The convention of using the double dash -- to extend a class with a breakpoint is ideal for use elsewhere, e.g. with SMACSS style module classes.
 
+### Folding Layout Patterns
+Use of Fractions to make a fluid column grid is not enough to make a succesful Responsive Web layout, sometimes you need to change the layout.  One way to do this is to rearrange a small set of layout areas, folding one or more of the areas above, below or to the side of the others.  At the moment there are four patterns available for doing this with three layout areas, and I hope more patterns will be added.  Less Mixins are provided to make it easy to add patterns that are applied between min-width and max-width breakpoints.
 
+Example use of Folding Pattern B between 400px and 900px:
+
+	<div class="units">
+		<div class="folding-pattern--400-900 folding-pattern-b--400-900">
+  		<div class="u-1-5 fold-1">
+  			<div class="u-inner"> some content </div>
+  		</div>
+  		<div class="u-1-5 fold-2">
+  			<div class="u-inner"> some content </div>
+  		</div>
+  		<div class="u-1-5 fold-3">
+  			<div class="u-inner"> some content </div>
+  		</div>
+		</div>
+		<div class="u-2-5">
+			<div class="u-inner"> some content </div>
+		</div>
+	</div>
+	
 ### What’s so wrong with coupling gutters & columns?
 
 CSS grid systems frequently (invariably?) define a class for a 'grid column' or 'grid unit' that defines (for the element the class is applied to) both the column width, and (using either padding or margin) the gutter between columns.
@@ -104,7 +125,7 @@ Unit is nearly at v1.0 — experiments with width & max-width, and experiments w
 
 See more about experiments with percentages at: https://github.com/paulhhowells/percentage-width-sub-pixel-rounding-error-test-page
 
-Read more about SMACSS at http://www.smacss.com
+Read more about Jonathan Snook’s SMACSS at http://www.smacss.com
 
 ### To Do
 * test this Read Me for comprehensibility
